@@ -15,19 +15,27 @@ module.exports = function(app) {
 
     app.post("/api/notes", function(req, res) {
 
-        let newEntry = req.body;
+        let newNote = req.body;
+
         let lastId = notesDB[notesDB.length - 1]["id"];
+
         let newId = lastId + 1;
-        newEntry["id"] = newId;
+
+        newNote["id"] = newId;
         
+
         console.log("Req.body:", req.body);
-        notesDB.push(newEntry);
+        
+        notesDB.push(newNote);
+
 
         writeFileAsync("./db/notesDB.json", JSON.stringify(notesDB)).then(function() {
+
             console.log("notesDB.json has been updated!");
+
         });
 
-        res.json(newEntry);
+        res.json(newNote);
     });
 
         app.delete("/api/notes/:id", function(req, res) {
