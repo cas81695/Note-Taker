@@ -11,7 +11,11 @@
     "type": "git",
     "url": "git+https://github.com/cas81695/Note-Taker.git"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
