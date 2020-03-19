@@ -1,19 +1,21 @@
-var express = require("express");
+const express = require("express");
 
-var app = express();
+const path = require("path");
 
-app.set('port', (process.env.PORT || 5000));
+const app = express();
+
+const PORT = process.env.PORT || 5000;
 
 app.use(express.urlencoded({ extended: true}));
 
 app.use(express.json());
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "Develop/public")));
 
 require("./Develop/routes/apiRoutes")(app);
 
 require("./Develop/routes/htmlRoutes")(app);
 
-app.listen(app.get('port'), function() {
-    console.log('App listening on port', app.get('port'));
-});
+app.listen(PORT, function() {
+    console.log("SERVER IS LISTENING: " + PORT);
+  });
